@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>OCLogin</title>
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <script src="/static/js/jquery-2.2.4.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/login.js"></script>
+
+        <script>
+            $(function() {
+                $("#header").load("/static/htmlparts/navbar.html");
+            });
+        </script>
+        <link rel="stylesheet" href="/static/css/login.css">
+    </head>
+    <body>
+        <div id="header"></div>
+        <div class="container">
+            <div class="form-signin center" role="form" method="post" action="/authenticate">
+                <h2 class="form-signin-heading">
+                    <i class="fa fa-comments-o">
+                        OCLogin
+                    </i>
+                </h2>
+                <input type="name" name="name" class="form-control" placeholder="Name" id="name" required autofocus>
+                <input type="password" name="pass" class="form-control" placeholder="Password" id="pass" required>
+                <br/>
+                <button class="btn btn-lg btn-primary btn-block" onclick="post()">ログイン</button>
+            </div>
+        </div>
+    </body>
+</html>

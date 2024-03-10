@@ -1,0 +1,41 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./app #大元のDockerfileがあるディレクトリパス
+      args:
+      - "HTTP_PROXY=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "HTTPS_PROXY=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "http_proxy=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "https_proxy=http://wwwproxy.kanazawa-it.ac.jp:8080"
+    working_dir: /go/src #コンテナのディレクトリ
+    tty: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - OCSummer-db
+    volumes:
+      - ./app:/go/src/app #大元の/appディレクトリをコンテナの/go/src/appにコピー
+    environment: 
+      - "SQL_URL=postgres://OCSummer-db:5432/ocsummer?user=ocsummer&password=ocsummer_password&sslmode=disable"
+      - "HTTP_PROXY=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "HTTPS_PROXY=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "http_proxy=http://wwwproxy.kanazawa-it.ac.jp:8080"
+      - "https_proxy=http://wwwproxy.kanazawa-it.ac.jp:8080"
+    
+  OCSummer-db:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - OCSummer-db:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - POSTGRES_USER=ocsummer
+      - POSTGRES_PASSWORD=ocsummer_password
+      - POSTGRES_DB=ocsummer
+      - TZ=Asia/Tokyo
+volumes:
+  OCSummer-db:

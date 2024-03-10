@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>OCInjection</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=devith-width, initial-scale=1">
+        <script src="/static/js/jquery-2.2.4.min.js"></script>
+        <script>
+            $(function() {
+                $("#header").load("/static/htmlparts/navbar.html");
+            });
+        </script>
+        <link rel="stylesheet" href="/static/css/search.css">
+    </head>
+    
+    <body>
+        <div id="header"></div>
+        <!-- <form method="get" action="/data/search"> -->
+        <div class="container">
+                <label for="search">製品の発注履歴を検索</label><br>
+                <input type="search" name="search" placeholder="製品名" id="search">
+                <button class="btn btn--search" onclick="get()">検索する</button>
+        </div>
+        <hr>
+        <h2>製品の発注履歴</h2>
+        <table class="list">
+            <thead>
+                <tr>
+                    <th>製品ID</th>
+                    <th>製品名</th>
+                    <th>購入者</th>
+                    <th>購入日</th>
+                </tr>
+            </thead>
+            <tbody id="tarta">
+            </tbody>
+        </table>
+        <script src="/static/js/data.js"></script>
+    </body>
+</html>

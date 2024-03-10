@@ -1,0 +1,84 @@
+.container {
+    text-align: center;
+}
+
+label[for="search"] {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+input[type="search"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: solid 2px #cccccc;
+    border-radius: 5px;
+}
+
+input[type="search"]:focus {
+    background-color: #c7fa98;
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+.btn--search,
+a.btn--search {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--search:hover,
+a.btn--search:hover {
+  color: #fff;
+  background: #f56500;
+}
+
+/* テーブルリスト */
+table.list {
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0;
+    border: 1px solid #3c6690;
+}
+
+table.list th{
+    text-align: center;
+    color:white;
+    background: linear-gradient(#a3cdfa,#4298ee);
+    /*border: 1px solid #3c6690;*/
+    border-width: 1px 0px;
+    border-color: #0c2b4b;
+    border-style: solid;
+    padding: 10px 0;
+}
+
+table.list td{
+    text-align: center;
+    /*border: 1px solid #a8b7c5;*/
+    border-width: 1px 0px;
+    border-color: #a8b7c5;
+    border-style: solid;
+    border-top:none;
+    padding: 10px 0;
+  }

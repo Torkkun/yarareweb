@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>OCXss</title>
+        <script src="/static/js/jquery-2.2.4.min.js"></script>
+        <script src="/static/js/xss.js"></script>
+        <script>
+            $(function() {
+                $("#header").load("/static/htmlparts/navbar.html");
+            });
+        </script>
+    </head>
+    <body>
+        <div id="header"></div>
+        <h1>Demo掲示板</h1>
+        <div class="writer">
+            <textarea name="comment" cols="30" rows="3" maxlength="80" wrap="hard" id="comment"></textarea>
+            <button class="btn btn-write" onclick="post()">書き込む</button>
+            <button class="btn btn-delete" onclick="dele()">投稿削除</button>
+            <button class="btn btn-exploitman" onclick="exploitman()">exマン投稿</button>
+        </div>
+        <hr>
+        <h2>投稿一覧</h2>
+        <div class="thread" id="thread">
+            <div class="post" id="1">
+                <div class="meta">
+                    <span class="number">1</span>
+                    <span class="name">
+                        <b>guest</b>
+                    </span>
+                    <span class="date">20XX/06/06(月) 10:10:10</span>
+                    <span class="uid">ID:0000</span>
+                </div>
+                <div class="message">
+                    <span class="escaped">てすと</span>
+                </div>
+                <br>
+            </div>
+        </div>
+    </body>
+</html>
