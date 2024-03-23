@@ -5,16 +5,16 @@ COPY . .
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
-ENV HTTPS_PROXY=wwwproxy.kanazawa-it.ac.jp:8080
-ENV HTTP_PROXY=wwwproxy.kanazawa-it.ac.jp:8080
+#ENV HTTPS_PROXY=wwwproxy.kanazawa-it.ac.jp:8080
+#ENV HTTP_PROXY=wwwproxy.kanazawa-it.ac.jp:8080
 # Build
-RUN go build -o app ./cmd/main.go
+RUN go build -o app /workdir/main.go
 
-#RUN cd app
-#RUN go run ./cmd/main.go
-
-# Runtime Container
-# FROM alpine
-# RUN apk add --no-cache ca-certificates
-# COPY --from=builder /workdir/app /app
-#  ENTRYPOINT [ "/app" ]
+FROM alpine
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /workdir/app /app
+COPY --from=builder /workdir/templates /templates
+COPY --from=builder /workdir/public /public
+COPY --from=builder /workdir/pkg /pkg
+EXPOSE 8080
+ENTRYPOINT [ "/app" ]
